@@ -4,7 +4,8 @@ python:
 env:
   - DJANGO=1.11.7
 before_script:
-  - pip install pipenv && pipenv shell && pipenv install
+  - pip install pipenv && pipenv shell && pipenv install && cd superlists
 script:
-  - cd superlists && python manage.py test
+  - pipenv run python manage.py test
+  - pipenv run python functional_tests.py
   
