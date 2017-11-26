@@ -8,4 +8,6 @@ before_script:
 script:
   - pipenv run python manage.py test
   - pipenv run python manage.py test lists.functional_tests
+notifications:
+  email: false
   
