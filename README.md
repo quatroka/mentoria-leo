@@ -1,1 +1,6 @@
 # mentoria-leo
+
+Requires:
+
+    phantomJS
+
