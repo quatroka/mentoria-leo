@@ -1,0 +1,10 @@
+language: python
+python:
+  - '3.6.3'
+env:
+  - DJANGO=1.11.7
+before_script:
+  - pip install pipenv && pipenv shell && pipenv install
+script:
+  - cd superlists && python manage.py test
+  
