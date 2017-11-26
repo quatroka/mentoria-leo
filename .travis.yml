@@ -7,7 +7,7 @@ before_script:
   - pip install pipenv && pipenv install && cd superlists
 script:
   - pipenv run python manage.py test
-  - pipenv run python manage.py test lists.functional_tests
+  - pipenv run python manage.py test functional_tests.functional_tests
 notifications:
   email: false
   
