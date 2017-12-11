@@ -2,13 +2,17 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()  
+chrome_options.add_argument("--headless")  
 
 class NewVisitorTest(StaticLiveServerTestCase):
     """ Class test for New Visitor """
     
     def setUp(self):
         """ Start browser before tests. """
-        self.browser = webdriver.PhantomJS()
+        self.browser = webdriver.Chrome(chrome_options=chrome_options)
 
     def tearDown(self):
         """ Close browser after tests. """
