@@ -1,8 +1,6 @@
 language: python
 python:
   - '3.6.3'
-env:
-  - DJANGO=1.11.7
 addons:
   apt:
     sources:
@@ -13,9 +11,10 @@ before_install:
   - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip -O /tmp/chromedriver
   - chmod 777 /tmp/chromedriver
 install:
-  - pip install pipenv && pipenv install && cd superlists
+  - pip install pipenv && pipenv install
+before_script:
+  - cd superlists
 script:
   - pipenv run python manage.py test
 notifications:
   email: false
-  
