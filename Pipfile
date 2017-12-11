@@ -12,3 +12,4 @@ django = "==1.11.7"
 
 [dev-packages]
 
+selenium = "*"

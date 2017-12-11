@@ -11,7 +11,7 @@ before_install:
   - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip -O /tmp/chromedriver
   - chmod 777 /tmp/chromedriver
 install:
-  - pip install pipenv && pipenv install
+  - pip install pipenv && pipenv install --dev
 before_script:
   - cd superlists
 script:
