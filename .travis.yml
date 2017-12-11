@@ -12,11 +12,11 @@ python:
 install:
   - pip install pipenv && pipenv install --dev
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - npm i -g npm@^3
-  - sleep 3
+  - wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -O /tmp/chromedriver
+  - chmod 777 /tmp/chromedriver
   - cd superlists
+env:
+  - CHROME_DRIVER_PATH="/tmp/chromedriver"
 script:
   - pipenv run python manage.py test
 notifications:

@@ -3,6 +3,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+import os
 
 class NewVisitorTest(StaticLiveServerTestCase):
     """ Class test for New Visitor """
@@ -10,7 +11,13 @@ class NewVisitorTest(StaticLiveServerTestCase):
         """ Start browser before tests. """
         chrome_options = Options()
         chrome_options.add_argument("--headless")
-        self.browser = webdriver.Chrome(chrome_options=chrome_options)
+
+        is_travis = 'TRAVIS' in os.environ
+        if is_travis:
+            driver_path = os.environ["CHROME_DRIVER_PATH"]
+            self.browser = webdriver.Chrome(driver_path, chrome_options=chrome_options)
+        else:
+            self.browser = webdriver.Chrome(chrome_options=chrome_options)
 
     def tearDown(self):
         """ Close browser after tests. """
