@@ -9,15 +9,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
     """ Class test for New Visitor """
     def setUp(self):
         """ Start browser before tests. """
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-
-        is_travis = 'TRAVIS' in os.environ
-        if is_travis:
-            driver_path = os.environ["CHROME_DRIVER_PATH"]
-            self.browser = webdriver.Chrome(driver_path, chrome_options=chrome_options)
-        else:
-            self.browser = webdriver.Chrome(chrome_options=chrome_options)
+        self.browser = webdriver.PhantomJS()
 
     def tearDown(self):
         """ Close browser after tests. """
