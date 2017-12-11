@@ -1,19 +1,22 @@
-language: python
-python:
-  - '3.6.3'
+dist: trusty
 addons:
   apt:
     sources:
       - google-chrome
     packages:
       - google-chrome-stable
+language: python
+python:
+  - '3.6.3'
 before_install:
-  - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip -O /tmp/chromedriver
-  - chmod 777 /tmp/chromedriver
+  - wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip -O /usr/local/bin/chromedriver
+  - chmod 777 /usr/local/bin/chromedriver
 install:
   - pip install pipenv && pipenv install --dev
 before_script:
   - cd superlists
+env:
+  - CHROME_DRIVER_PATH=/usr/local/bin/chromedriver
 script:
   - pipenv run python manage.py test
 notifications:

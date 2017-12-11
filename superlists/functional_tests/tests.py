@@ -12,6 +12,10 @@ class NewVisitorTest(StaticLiveServerTestCase):
     
     def setUp(self):
         """ Start browser before tests. """
+        try:
+            driver_path = os.environ["CHROME_DRIVER_PATH"]
+        except KeyError as e:
+            raise KeyError("Expect CHROME_DRIVER_PATH as environment variable")
         self.browser = webdriver.Chrome(chrome_options=chrome_options)
 
     def tearDown(self):
